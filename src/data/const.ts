@@ -26,6 +26,14 @@ enum WeaponEnum {
   Ssg08 = "Ssg08",
 }
 
+enum ChallengeEnum {
+  "Sans son" = "Sans son",
+  "Sans flash" = "Sans flash",
+  "Sans smoke" = "Sans smoke",
+  "Only HS" = "Only HS",
+  "Accroupi" = "Accroupi",
+}
+
 export const mapData: Maps[] = [
   {
     id: 1,
@@ -99,4 +107,23 @@ export const WeaponArray = () => {
     };
   });
   return weaponArray;
+};
+
+export const ChallengeArray = () => {
+  const challengeArray = Object.keys(ChallengeEnum).map((key) => {
+    return {
+      option: ChallengeEnum[key as keyof typeof ChallengeEnum],
+      style: {
+        backgroundColor:
+          Object.keys(ChallengeEnum).indexOf(
+            ChallengeEnum[key as keyof typeof ChallengeEnum]
+          ) %
+            2 ===
+          0
+            ? "#5d79ae"
+            : "#de9b35",
+      },
+    };
+  });
+  return challengeArray;
 };

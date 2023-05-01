@@ -3,7 +3,13 @@ import Button from "@/Component/Button";
 import { Box, Text, Select, SimpleGrid, Center } from "@chakra-ui/react";
 import CustomWheel from "@/Component/Wheel";
 import CallToActionWithVideo from "@/Component/CTA";
-import { data, mapData, RushArray, WeaponArray } from "../data/const";
+import {
+  data,
+  mapData,
+  RushArray,
+  WeaponArray,
+  ChallengeArray,
+} from "../data/const";
 type Props = {};
 
 const Home = () => {
@@ -39,7 +45,7 @@ const Home = () => {
           ))}
         </Select>
       </Box>
-      <SimpleGrid columns={3} spacing={10}>
+      <SimpleGrid spacing={10} columns={{ sm: 1, md: 2, lg: 3 }}>
         <Box
           sx={{
             display: "flex",
@@ -70,13 +76,21 @@ const Home = () => {
             setMustSpin={setMustSpin}
           />
         </Box>
-
-        <CustomWheel
-          data={data}
-          mustSpin={mustSpin}
-          prizeNumber={Math.floor(Math.random() * data.length)}
-          setMustSpin={setMustSpin}
-        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Text fontSize="2xl">Challenge</Text>
+          <CustomWheel
+            data={ChallengeArray()}
+            mustSpin={mustSpin}
+            prizeNumber={Math.floor(Math.random() * ChallengeArray().length)}
+            setMustSpin={setMustSpin}
+          />
+        </Box>
       </SimpleGrid>
       <Center
         sx={{
